@@ -1,4 +1,3 @@
-use cmake;
 use std::env;
 use std::path::PathBuf;
 use std::process::Command;
@@ -38,8 +37,8 @@ fn main() {
         .pic(true)
         .profile("Release")
         .define("BUILD_SHARED_LIBS", "OFF")
+        .define("enable_parallel_mark", "Off")
         .cflag("-DGC_ALWAYS_MULTITHREADED")
-        .cflag("-DGC_JAVA_FINALIZATION")
         .build();
 
     println!("cargo:rustc-link-search=native={}", &build_dir.display());
